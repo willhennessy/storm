@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-dark.css">
     <link rel="stylesheet" href="stylesheets/custom.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
@@ -16,32 +17,29 @@
 
   </head>
   <body>
+    <header>
+      <h1>Storm</h1>
+    </header>
 
-      <header>
-        <h1>Storm</h1>
-      </header>
-
-      <div id="banner">
-        Ideation, Discussion, Election, Decision
-      </div><!-- end banner -->
+    <div id="banner">
+    </div><!-- end banner -->
 
     <div class="wrapper">
       <nav>
         <ul></ul>
       </nav>
       <section>
-        <p>Storm is a brainstorming web app I am building as my final project in CS 598: Social Spaces on the Internet at the University of Illinois.</p>
+        <div class="success">Success!</div>
 
-        <p>The goal of this computer-mediated communication tool is to create a brainstorming environment without peer pressure and reputation influencers.</p>
+        <script>
+          var key = window.location.search.split('key=')[1];
 
-        <p>Face-to-face brainstorming has some notable advantages, but I believe this CMC tool may be better for some teams.</p>
+          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions');
 
-        <p>I hope to test a few small groups with this tool and report interesting findings.</p>
+          //var session = ref.
 
-        <p>Will Hennessy</p>
-
-        <a href="create.html" class="big-button button"><span>Get Started</span></a>
-
+          document.write("Your brainstorm session will begin on<br>")
+        </script>
       </section>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->

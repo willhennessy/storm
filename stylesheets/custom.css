@@ -1,4 +1,4 @@
-.big-button {
+.button {
   border: 1px solid #dba500;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffe788), color-stop(100%, #ffce38));
   background: -webkit-linear-gradient(#ffe788, #ffce38);
@@ -29,6 +29,14 @@
   float: left;
   margin: 0 45px 0 0;
 }
+
+.big-button {
+  font-size: 18px;
+  padding: 4px 16px;
+  margin-top: 6px;
+  line-height: 14px;
+}
+
 .big-button:hover {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffe788), color-stop(100%, #ffe788));
   background: -webkit-linear-gradient(#ffe788, #ffe788);
@@ -38,6 +46,7 @@
   background: linear-gradient(#ffe788, #ffe788);
   background-color: #ffeca0;
 }
+
 .big-button span {
   float: left;
   line-height: 52px;
@@ -45,4 +54,24 @@
   color: #9d7f0d;
   text-transform: uppercase;
   text-shadow: rgba(255, 255, 255, 0.2) 0 1px 0;
+}
+
+input {
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+label {
+  font-size: 20px;
+  color: #4276b6;
+  margin: 10px;
+  /* ffcc00  is a yellow text */
+}
+
+.success {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4276b6;
+  margin-top: 6px;
+  margin-bottom: 20px;
 }
