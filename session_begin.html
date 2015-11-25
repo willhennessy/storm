@@ -18,18 +18,13 @@
 
   </head>
   <body>
-    <header>
-      <h1><a class="invisible" href="index.html">Storm</a></h1>
-    </header>
-
-    <div id="banner">
-    </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
+    <div class="container">
+      <div id="topbar">
+        <span id="goal"></span>
+      </div>
+      <div id="sidebar">
+      </div>
+      <div id="main">
         <div id="section-title" class="section-title">Welcome</div>
 
         <div id="overview">
@@ -88,7 +83,7 @@
               "Invite group members by sharing this link:<br>" + generateStormLink());
           }
 
-          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/'+getFirebaseKey());
+          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/' + getFirebaseKey());
 
           ref.on("value", function(snapshot) {
             var session = snapshot.val();
@@ -105,12 +100,15 @@
             $("#email4").html(session.email4);
             $("#email5").html(session.email5);
             $("#email6").html(session.email6);
-              
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });
         </script>
-      </section>
+      </div>
+    </div>
+
+    <div class="wrapper">
+
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
