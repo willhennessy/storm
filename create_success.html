@@ -31,10 +31,20 @@
       <section>
         <div class="success">Success!</div>
 
+        <div id="confirmation">
+          <!-- to be filled in dynamically -->
+        </div>
+
         <script>
-          var key = window.location.search.split('key=')[1];
-          document.write("Invite group members to the session by sending them this link:<br>")
-          document.write("<a href=\"http://www.willhennessy.com/storm/session?key="+key+"\">http://www.willhennessy.com/storm/session?key="+key);
+          var key = window.location.search.split('session=')[1];
+          document.getElementById("confirmation").innerHTML = "Invite group members to the session by sending them this link:<br>"
+            //+ "<a href=\"http://www.willhennessy.com/storm/session?session="+key+"\">http://www.willhennessy.com/storm/session?session="+key
+            + "<a href=\"/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/session_begin.html?session="+key+"\">http://www.willhennessy.com/storm/session?session="+key
+          ;
+
+          //document.write("<a href=\"http://www.willhennessy.com/storm/session?session="+key+"\">http://www.willhennessy.com/storm/session?session="+key);
+
+          //document.write("<a href=\"/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/session_begin.html?session="+key+"\">http://www.willhennessy.com/storm/session?session="+key);
         </script>
       </section>
     </div>

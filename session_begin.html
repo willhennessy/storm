@@ -29,16 +29,104 @@
         <ul></ul>
       </nav>
       <section>
-        <div class="success">Success!</div>
+        <div class="success">Welcome</div>
+
+        <div id="overview">
+          Your brainstorming session will begin soon!
+        </div>
+        <br>
+
+        <!-- Table of information -->
+        <table class="info-table">
+          <col width="25%">
+          <tr>
+            <td><label>Date</label></td>
+            <td id="date"></td>
+          </tr>
+          <tr>
+            <td><label>Start Time</label></td>
+            <td id="time"></td>
+          </tr>
+          <tr>
+            <td><label>Duration</label></td>
+            <td id="duration"></td>
+          </tr>
+          <tr>
+            <td><label>Goal</label></td>
+            <td id="goal"></td>
+          </tr>
+          <tr>
+            <td><label>Criteria</label></td>
+            <td>
+              <ol>
+                <li id="criteria1"></li>
+                <li id="criteria2"></li>
+                <li id="criteria3"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Invitees</label></td>
+            <td>
+              <ul>
+                <li id="email1"></li>
+                <li id="email2"></li>
+                <li id="email3"></li>
+                <li id="email4"></li>
+                <li id="email5"></li>
+                <li id="email6"></li>
+              </ul>
+            </td>
+          </tr>
+        </table>
 
         <script>
-          var key = window.location.search.split('key=')[1];
+          var key = window.location.search.split("session=")[1];
 
-          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions');
+          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/'+key);
 
-          //var session = ref.
+          ref.on("value", function(snapshot) {
+            var session = snapshot.val();
+            console.log(session);
+            $("#date").html(session.date);
+            $("#time").html(formatTime(session.time));
+            $("#duration").html(session.duration+" minutes");
+            $("#goal").html(session.goal);
+            $("#criteria1").html(session.criteria1);
+            $("#criteria2").html(session.criteria2);
+            $("#criteria3").html(session.criteria3);
+            $("#email1").html(session.email1);
+            $("#email2").html(session.email2);
+            $("#email3").html(session.email3);
+            $("#email4").html(session.email4);
+            $("#email5").html(session.email5);
+            $("#email6").html(session.email6);
+              
+          }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+          });
 
-          document.write("Your brainstorm session will begin on<br>")
+          /* param: 24-hour time "13:24"
+             output: 12-hour time "1:24 pm" */
+          function formatTime(rawTime) {
+            var h = parseInt(rawTime.split(':')[0]);
+            var m = rawTime.split(':')[1];
+            var output = "";
+            if (h > 12)
+              output += h-12;
+            else
+              output += h;
+
+            output += ":";
+            output += m;
+
+            if (h >= 12)
+              output += " pm";
+            else
+              output += " am";
+
+            return output
+          }
         </script>
       </section>
     </div>

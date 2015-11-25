@@ -75,3 +75,13 @@ label {
   margin-top: 6px;
   margin-bottom: 20px;
 }
+
+.info-table ol {
+  margin: 0px;
+  padding-left: 20px;
+}
+
+.info-table ul {
+  margin: 0px;
+  padding-left: 10px;
+}
