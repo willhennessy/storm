@@ -10,6 +10,7 @@
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/main.js"></script>
+    <script src="javascripts/util.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -85,7 +86,7 @@
 
             var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions');
 
-             newSessionRef = ref.push({
+            newSessionRef = ref.push({
               goal: goal,
               date: date,
               time: time,
@@ -113,8 +114,12 @@
             else {
               // redirect to success page with the key
               var key = newSessionRef.key();
-              //window.location.replace("http://www.willhennessy.com/storm/create_success?session="+key);
-              window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/create_success.html?session="+key);
+
+              if (isDeployed()) {
+                window.location.replace("http://www.willhennessy.com/storm/session_begin?creator=1&session="+key);
+              } else {
+                window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/session_begin.html?creator=1&session="+key);
+              }
             }
           }
         </script>

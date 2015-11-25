@@ -10,6 +10,7 @@
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/main.js"></script>
+    <script src="javascripts/util.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -29,7 +30,7 @@
         <ul></ul>
       </nav>
       <section>
-        <div class="success">Welcome</div>
+        <div id="section-title" class="section-title">Welcome</div>
 
         <div id="overview">
           Your brainstorming session will begin soon!
@@ -81,13 +82,16 @@
         </table>
 
         <script>
-          var key = window.location.search.split("session=")[1];
+          if (window.location.href.indexOf("creator=1") > -1) {
+            $("#section-title").html("Success!");
+            $("#overview").html(
+              "Invite group members by sharing this link:<br>" + generateStormLink());
+          }
 
-          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/'+key);
+          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/'+getFirebaseKey());
 
           ref.on("value", function(snapshot) {
             var session = snapshot.val();
-            console.log(session);
             $("#date").html(session.date);
             $("#time").html(formatTime(session.time));
             $("#duration").html(session.duration+" minutes");
@@ -105,28 +109,6 @@
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });
-
-          /* param: 24-hour time "13:24"
-             output: 12-hour time "1:24 pm" */
-          function formatTime(rawTime) {
-            var h = parseInt(rawTime.split(':')[0]);
-            var m = rawTime.split(':')[1];
-            var output = "";
-            if (h > 12)
-              output += h-12;
-            else
-              output += h;
-
-            output += ":";
-            output += m;
-
-            if (h >= 12)
-              output += " pm";
-            else
-              output += " am";
-
-            return output
-          }
         </script>
       </section>
     </div>
