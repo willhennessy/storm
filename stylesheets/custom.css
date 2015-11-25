@@ -85,3 +85,8 @@ label {
   margin: 0px;
   padding-left: 10px;
 }
+
+a.invisible {
+  text-decoration: none;
+  color: white;
+}
