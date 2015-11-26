@@ -1,5 +1,5 @@
-var min = 0;
-var sec = 0;
+var min = 1;
+var sec = 11;
 
 function initClock(time, duration) {
   // TODO - calculate the time for this section (ideation, discussion, etc.)
@@ -9,7 +9,13 @@ function initClock(time, duration) {
 }
 
 function finishStage() {
-	// redirect to the next page
+  // redirect to the next page
+  var key = getFirebaseKey();
+  if (isDeployed()) {
+    window.location.replace("http://www.willhennessy.com/storm/ideation?session="+key);
+  } else {
+    window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?&session="+key);
+  }
 }
 
 function updateClock() {

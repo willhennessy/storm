@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Storm</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="stylesheets/custom.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/util.js"></script>
+    <script src="javascripts/clock.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+    <div class="container">
+      <div id="topbar">
+        <span id="goal"></span>
+      </div>
+      <div id="sidebar">
+        <div id="clock">00:00</div>
+        <div id="definition" class="stage">1) Definition</div>
+        <div id="ideation" class="stage active">2) Ideation</div>
+        <div id="discussion" class="stage">3) Discussion</div>
+        <div id="decision" class="stage">4) Decision</div>
+      </div>
+      <div id="main">
+        <div id="section-title" class="section-title">Ideation</div>
+
+        <div id="overview">
+          Brainstorm as many ideas as you can! When time runs out, all ideas will be shared with the group. Feel free to propose crazy ideas, these ideas will always be anonymous.
+        </div>
+        <br>
+
+
+        <script>
+          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/' + getFirebaseKey());
+
+          ref.on("value", function(snapshot) {
+            var session = snapshot.val();
+            initClock(session.time, session.duration);
+            $("#goal").html(session.goal);
+          }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+          });
+        </script>
+      </div>
+    </div>
+
+    <div class="wrapper">
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

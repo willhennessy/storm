@@ -192,6 +192,10 @@ a.invisible {
   padding: 15px 30px;
 }
 
+.active.stage {
+  color: #4276b6;
+}
+
 #clock {
   font-size: 30px;
   font-weight: bold;
