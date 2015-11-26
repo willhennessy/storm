@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/main.js"></script>
     <script src="javascripts/util.js"></script>
+    <script src="javascripts/clock.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -23,6 +24,11 @@
         <span id="goal"></span>
       </div>
       <div id="sidebar">
+        <div id="clock">00:00</div>
+        <div id="definition" class="stage">1) Definition</div>
+        <div id="ideation" class="stage">2) Ideation</div>
+        <div id="discussion" class="stage">3) Discussion</div>
+        <div id="decision" class="stage">4) Decision</div>
       </div>
       <div id="main">
         <div id="section-title" class="section-title">Welcome</div>
@@ -83,12 +89,15 @@
               "Invite group members by sharing this link:<br>" + generateStormLink());
           }
 
+          $("#definition").css("color", "#4276b6");
+
           var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/' + getFirebaseKey());
 
           ref.on("value", function(snapshot) {
             var session = snapshot.val();
             $("#date").html(session.date);
             $("#time").html(formatTime(session.time));
+            initClock(session.time, session.duration);
             $("#duration").html(session.duration+" minutes");
             $("#goal").html(session.goal);
             $("#criteria1").html(session.criteria1);

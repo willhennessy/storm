@@ -138,6 +138,7 @@ a.invisible {
   -khtml-border-radius: 0px 2px 2px 0px;
   border-radius: 0px 2px 2px 0px;
   padding-right: 10px;
+  padding-top: 50px;
 }
 
 #main {
@@ -183,3 +184,25 @@ a.invisible {
   left: 20%;
   background: #0000ff;
 }*/
+
+.stage {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  padding: 15px 30px;
+}
+
+#clock {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  padding: 20px;
+  background-color: #4276b6;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
