@@ -34,7 +34,7 @@
         <div id="section-title" class="section-title">Welcome</div>
 
         <div id="overview">
-          Your brainstorming session will begin soon!
+          Your brainstorming session will begin when the countdown hits zero. The process consists of three steps: first, individually. generate as many ideas as possible. Second, discuss each idea for a short timed interval. Repeat that process to build off ideas, and finally vote for the winner.
         </div>
         <br>
 
@@ -89,15 +89,13 @@
               "Invite group members by sharing this link:<br>" + generateStormLink());
           }
 
-          $("#definition").css("color", "#4276b6");
-
           var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/' + getFirebaseKey());
 
           ref.on("value", function(snapshot) {
             var session = snapshot.val();
             $("#date").html(session.date);
             $("#time").html(formatTime(session.time));
-            initClock(session.time, session.duration);
+            initDefinitionClock(session.date, session.time, session.duration);
             $("#duration").html(session.duration+" minutes");
             $("#goal").html(session.goal);
             $("#criteria1").html(session.criteria1);

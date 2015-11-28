@@ -34,7 +34,7 @@
         <div id="section-title" class="section-title">Ideation</div>
 
         <div id="overview">
-          Brainstorm as many ideas as you can! When time runs out, all ideas will be shared with the group. Feel free to propose crazy ideas, these ideas will always be anonymous.
+          Brainstorm as many ideas as you can! When time runs out, all ideas will be shared with the group. Feel free to propose crazy ideas because they will always be anonymous.
         </div>
         <br>
 
@@ -44,7 +44,7 @@
 
           ref.on("value", function(snapshot) {
             var session = snapshot.val();
-            initClock(session.time, session.duration);
+            //initClock(session.time, session.duration);
             $("#goal").html(session.goal);
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);

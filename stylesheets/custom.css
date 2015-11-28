@@ -198,6 +198,7 @@ a.invisible {
 
 #clock {
   font-size: 30px;
+  font-family: "Lucidatypewriter", monospace;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;

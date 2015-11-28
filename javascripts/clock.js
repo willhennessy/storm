@@ -1,11 +1,26 @@
 var min = 1;
 var sec = 11;
 
-function initClock(time, duration) {
-  // TODO - calculate the time for this section (ideation, discussion, etc.)
-  min = parseInt(time.split(":")[0]);
-  sec = parseInt(time.split(":")[1]);
-  $("#clock").html(getTimeString());
+function isWithinOneHour(now, start) {
+  var diff = start.getTime() - now.getTime();
+  return diff >= 0 && diff < 3600000; // 1hr in ms
+}
+
+/* Init for stage 1 (definition) */
+function initDefinitionClock(startDate, startTime, duration) {
+  var now = new Date();
+  var start = new Date(startDate+","+startTime);
+  console.log(start);
+  var diff = start.getTime() - now.getTime();
+  if (diff < 0) { // session already started
+  	finishStage();
+  } else if (diff < 3600000) { // starting soon. display countdown
+    min = Math.floor(diff/1000/60);
+    sec = Math.floor((diff/1000) % 60)
+  	$("#clock").html(getTimeString());
+  	updateClock(); // run once to start
+	setInterval(updateClock,1000);
+  }
 }
 
 function finishStage() {
@@ -45,6 +60,3 @@ function getTimeString() {
 
   return m + ":" + s;
 }
-
-updateClock(); // run once to start
-setInterval(updateClock,1000);
