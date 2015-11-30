@@ -112,12 +112,11 @@
             }
             else {
               // redirect to the discussion page
-              console.log("submitted!");
-              // if (isDeployed()) {
-              //   window.location.replace("http://www.willhennessy.com/storm/discussion?session="+getFirebaseKey());
-              // } else {
-              //   window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/discussion.html?creator=1&session="+getFirebaseKey());
-              // }
+              if (isDeployed()) {
+                window.location.replace("http://www.willhennessy.com/storm/discussion?session="+getFirebaseKey());
+              } else {
+                window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/discussion.html?creator=1&session="+getFirebaseKey());
+              }
             }
           }
         </script>
