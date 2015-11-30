@@ -27,13 +27,14 @@ function initBeginClock(startDate, startTime, duration) {
 
 /* init for stage 2 (ideation) */
 function initIdeationClock(startDate, startTime, duration) {
-  min = 5;
-  sec = 0;
+  min = 0;
+  sec = 20;
   startClock();
 }
 
 /* route the appropriate finish function */
 function finishStage() {
+  clearInterval(intervalID);
   var stage = getCurrentStage();
   if (stage === "begin")
   	finishBegin();
@@ -56,7 +57,7 @@ function finishBegin() {
 }
 
 function finishIdeation() {
-  // TODO - store ideas in the db
+  submitToFirebase();
 
   return;
 
@@ -78,7 +79,7 @@ function finishDecision() {
 function startClock() {
   $("#clock").html(getTimeString());
   updateClock(); // run once to start
-  setInterval(updateClock,1000);
+  intervalID = setInterval(updateClock,1000);
 }
 
 function updateClock() {

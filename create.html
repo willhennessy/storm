@@ -85,7 +85,7 @@
             var email6 = $('#email6').val();
 
             var key = "";
-            var ref = new Firebase(getStormSessionUrl(key));
+            var ref = new Firebase(getSessionUrl(key));
 
             newSessionRef = ref.push({
               goal: goal,

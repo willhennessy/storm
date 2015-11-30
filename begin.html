@@ -90,9 +90,9 @@
           }
 
           var key = getFirebaseKey();
-          var ref = new Firebase(getStormSessionUrl(key));
+          var ref = new Firebase(getSessionUrl(key));
 
-          ref.on("value", function(snapshot) {
+          ref.once("value", function(snapshot) {
             var session = snapshot.val();
             $("#date").html(session.date);
             $("#time").html(formatTime(session.time));

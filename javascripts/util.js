@@ -9,13 +9,13 @@ function getFirebaseKey() {
 }
 
 /* Returns the Firebase url to the brainstorm session with the key */
-function getStormSessionUrl(key) {
-  return getFirebaseUrl() + 'sessions/' + key;
+function getSessionUrl(key) {
+  return getFirebaseUrl() + "sessions/" + key;
 }
 
 /* Returns the Firebase url to the brainstorm idea entity with the key */
-function getStormIdeaUrl(key) {
-  return getFirebaseUrl() + 'sessions/ideas/' + key;
+function getIdeaUrl(key) {
+  return getSessionUrl(key) + "/ideas/";
 }
 
 /* Returns true if site is deployed, false if local testing */
