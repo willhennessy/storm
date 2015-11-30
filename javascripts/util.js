@@ -1,11 +1,38 @@
-/* Return the firebase key in the query parameters of window.location */
+/* Fetch the static Firebase URL */
+function getFirebaseUrl() {
+  return "https://sizzling-torch-4793.firebaseio.com/";
+}
+
+/* Returns the firebase key in the query parameters of window.location */
 function getFirebaseKey() {
   return window.location.search.split("session=")[1];
+}
+
+/* Returns the Firebase url to the brainstorm session with the key */
+function getStormSessionUrl(key) {
+  return getFirebaseUrl() + 'sessions/' + key;
+}
+
+/* Returns the Firebase url to the brainstorm idea entity with the key */
+function getStormIdeaUrl(key) {
+  return getFirebaseUrl() + 'sessions/ideas/' + key;
 }
 
 /* Returns true if site is deployed, false if local testing */
 function isDeployed() {
   return window.location.href.indexOf("www.willhennessy.com") > -1;
+}
+
+/* Returns the current stage: "begin", "ideation", "discussion", "decision" */
+function getCurrentStage() {
+  if (window.location.href.indexOf("begin") > -1)
+    return "begin";
+  else if (window.location.href.indexOf("ideation") > -1)
+    return "ideation";
+  else if (window.location.href.indexOf("discussion") > -1)
+    return "discussion";
+  else if (window.location.href.indexOf("decision") > -1)
+    return "decision";
 }
 
 /* param: none (assumes key is in the query params of window.location)
@@ -27,6 +54,8 @@ function formatTime(rawTime) {
   var output = "";
   if (h > 12)
     output += h-12;
+  else if (h == 0)
+    output += 12;
   else
     output += h;
 

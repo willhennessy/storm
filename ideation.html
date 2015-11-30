@@ -38,17 +38,87 @@
         </div>
         <br>
 
+        <form onsubmit="return submitToFirebase(event)">
+          <label>Idea</label>
+          <input type="text" id="idea1" placeholder="Idea title"><br><br>
+          <label>Description</label>
+          <textarea id="description1" rows="5" cols="70"></textarea><br><br>
+
+          <label>Idea</label>
+          <input type="text" id="idea2" placeholder="Idea title"><br><br>
+          <label>Description</label>
+          <textarea id="description2" rows="5" cols="70"></textarea><br><br>
+
+          <label>Idea</label>
+          <input type="text" id="idea3" placeholder="Idea title"><br><br>
+          <label>Description</label>
+          <textarea id="description3" rows="5" cols="70"></textarea><br><br>
+
+          <label>Idea</label>
+          <input type="text" id="idea4" placeholder="Idea title"><br><br>
+          <label>Description</label>
+          <textarea id="description4" rows="5" cols="70"></textarea><br><br>
+
+          <label>Idea</label>
+          <input type="text" id="idea5" placeholder="Idea title"><br><br>
+          <label>Description</label>
+          <textarea id="description5" rows="5" cols="70"></textarea><br><br>
+
+          <br><br><p>These ideas will be automatically submitted when the timer hits zero.</p>
+        </form>
 
         <script>
-          var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions/' + getFirebaseKey());
-
+          var key = getFirebaseKey();
+          var ref = new Firebase(getStormSessionUrl(key));
           ref.on("value", function(snapshot) {
             var session = snapshot.val();
-            //initClock(session.time, session.duration);
+            initIdeationClock(session.date, session.time, session.duration);
             $("#goal").html(session.goal);
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });
+
+          function submitToFirebase(event) {
+            event.preventDefault();
+            var idea1 = $('#idea1').val();
+            var idea2 = $('#idea2').val();
+            var idea3 = $('#idea3').val();
+            var idea4 = $('#idea4').val();
+            var idea5 = $('#idea5').val();
+            var description1 = $('#description1').val();
+            var description2 = $('#description2').val();
+            var description3 = $('#description3').val();
+            var description4 = $('#description4').val();
+            var description5 = $('#description5').val();
+
+            var key = getFirebaseKey();
+            var ref = new Firebase(getStormIdeaUrl(key));
+
+            newSessionRef = ref.push({
+              idea1: {title: idea1, description: description1},
+              idea2: {title: idea2, description: description2},
+              idea3: {title: idea3, description: description3},
+              idea4: {title: idea4, description: description4},
+              idea5: {title: idea5, description: description5},
+            },
+            onSubmitToFirebaseComplete);
+
+            return false;
+          }
+
+          function onSubmitToFirebaseComplete(error) {
+            if (error) {
+              alert("Sorry, an error occurred");
+            }
+            else {
+              // redirect to the discussion page
+              if (isDeployed()) {
+                window.location.replace("http://www.willhennessy.com/storm/discussion?session="+getFirebaseKey());
+              } else {
+                window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/discussion.html?creator=1&session="+getFirebaseKey());
+              }
+            }
+          }
         </script>
       </div>
     </div>

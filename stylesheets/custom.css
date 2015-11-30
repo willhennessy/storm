@@ -100,7 +100,8 @@ a.invisible {
   z-index: 101;
   left: 0%;
   right: 0%;
-  height: auto;/*50px;*/
+  height: auto;
+  min-height: 16px;
   position: fixed;
   background: url(../images/background.png) #4276b6;
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -124,7 +125,7 @@ a.invisible {
   right: 80%;
   height: 100vh;
   top: 50px;
-  position: fixed; /* absolute or relative */
+  position: fixed;
   background: #ffcc00;
   border: 1px solid #f0b500;
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -146,9 +147,9 @@ a.invisible {
   left: 20%;
   right: 0%;
   margin-top: 50px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 30px;
-  position: fixed;
+  position: absolute; /* fixed or absolute or relative */
   background: #ffffff;
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);

@@ -84,7 +84,8 @@
             var email5 = $('#email5').val();
             var email6 = $('#email6').val();
 
-            var ref = new Firebase('https://sizzling-torch-4793.firebaseio.com/sessions');
+            var key = "";
+            var ref = new Firebase(getStormSessionUrl(key));
 
             newSessionRef = ref.push({
               goal: goal,

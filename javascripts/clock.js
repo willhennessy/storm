@@ -7,30 +7,78 @@ function isWithinOneHour(now, start) {
 }
 
 /* Init for stage 1 (definition) */
-function initDefinitionClock(startDate, startTime, duration) {
+function initBeginClock(startDate, startTime, duration) {
   var now = new Date();
   var start = new Date(startDate+","+startTime);
-  console.log(start);
   var diff = start.getTime() - now.getTime();
+
   if (diff < 0) { // session already started
   	finishStage();
-  } else if (diff < 3600000) { // starting soon. display countdown
+  } else if (diff < 6000000) {
     min = Math.floor(diff/1000/60);
     sec = Math.floor((diff/1000) % 60)
-  	$("#clock").html(getTimeString());
-  	updateClock(); // run once to start
-	setInterval(updateClock,1000);
+    startClock();
+  } else {
+  	min = 99;
+  	sec = 99;
+    $("#clock").html(getTimeString());
   }
 }
 
+/* init for stage 2 (ideation) */
+function initIdeationClock(startDate, startTime, duration) {
+  min = 5;
+  sec = 0;
+  startClock();
+}
+
+/* route the appropriate finish function */
 function finishStage() {
-  // redirect to the next page
+  var stage = getCurrentStage();
+  if (stage === "begin")
+  	finishBegin();
+  else if (stage === "ideation")
+  	finishIdeation();
+  else if (stage === "discussion")
+  	finishDiscussion();
+  else if (stage === "decision")
+  	finishDecision();
+  else
+  	alert("Sorry, an error occured");
+}
+
+function finishBegin() {
   var key = getFirebaseKey();
-  if (isDeployed()) {
+  if (isDeployed())
     window.location.replace("http://www.willhennessy.com/storm/ideation?session="+key);
-  } else {
-    window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?&session="+key);
-  }
+  else
+  	window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?&session="+key);
+}
+
+function finishIdeation() {
+  // TODO - store ideas in the db
+
+  return;
+
+  var key = getFirebaseKey();
+  if (isDeployed())
+    window.location.replace("http://www.willhennessy.com/storm/discussion?session="+key);
+  else
+  	window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/discussion.html?&session="+key);
+}
+
+function finishDiscussion() {
+  return;
+}
+
+function finishDecision() {
+  return;
+}
+
+function startClock() {
+  $("#clock").html(getTimeString());
+  updateClock(); // run once to start
+  setInterval(updateClock,1000);
 }
 
 function updateClock() {
