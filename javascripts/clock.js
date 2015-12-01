@@ -1,7 +1,8 @@
-var min = 1;
-var sec = 11;
+var min = 99;
+var sec = 99;
 var ideas = null; // array of ideas from db
 var numIdeasCompleted = 0;
+var intervalID = 0;
 
 function isWithinOneHour(now, start) {
   var diff = start.getTime() - now.getTime();
@@ -48,8 +49,8 @@ function updateDiscussionClock() {
   	fetchIdeas();
   } else if (min == 0 && sec == 0 && !isDiscussionDone()) { 
     displayNextIdea();
-    min = 0;
-    sec = 10;
+    min = 90;
+    sec = 0;
     $("#clock").html(getTimeString());
   } else if (min == 0 && sec == 0 && isDiscussionDone()) {
   	finishStage();
@@ -85,7 +86,7 @@ function displayNextIdea() {
 
 /* Returns true if every topic has been discussed */
 function isDiscussionDone() {
-  return numIdeasCompleted > ideas.length;
+  return numIdeasCompleted >= ideas.length;
 }
 
 /* route the appropriate finish function */
@@ -114,18 +115,14 @@ function finishBegin() {
 
 function finishIdeation() {
   submitToFirebase();
-
-  return;
-
-  var key = getFirebaseKey();
-  if (isDeployed())
-    window.location.replace("http://www.willhennessy.com/storm/discussion?session="+key);
-  else
-  	window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/discussion.html?&session="+key);
 }
 
 function finishDiscussion() {
-  return;
+  if (isDeployed()) {
+    window.location.replace("http://www.willhennessy.com/storm/ideation?session="+getFirebaseKey());
+  } else {
+    window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?creator=1&session="+getFirebaseKey());
+  }
 }
 
 function finishDecision() {
