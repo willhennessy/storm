@@ -32,6 +32,12 @@ function initIdeationClock(startDate, startTime, duration) {
   startClock();
 }
 
+function initDiscussionClock(startDate, startTime, duration) {
+  min = 10;
+  sec = 0;
+  startClock();
+}
+
 /* route the appropriate finish function */
 function finishStage() {
   clearInterval(intervalID);

@@ -24,7 +24,7 @@
         <span id="goal"></span>
       </div>
       <div id="sidebar">
-        <div id="clock">00:00</div>
+        <div id="clock">--:--</div>
         <div id="definition" class="stage">1) Definition</div>
         <div id="ideation" class="stage active">2) Ideation</div>
         <div id="discussion" class="stage">3) Discussion</div>
@@ -48,8 +48,9 @@
           var ref = new Firebase(getSessionUrl(key));
           ref.once("value", function(snapshot) {
             var session = snapshot.val();
-            initIdeationClock(session.date, session.time, session.duration);
+            initDiscussionClock(session.date, session.time, session.duration);
             $("#goal").html(session.goal);
+            console.log(session);
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });

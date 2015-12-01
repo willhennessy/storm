@@ -14,7 +14,7 @@ function getSessionUrl(key) {
 }
 
 /* Returns the Firebase url to the brainstorm idea entity with the key */
-function getIdeaUrl(key) {
+function getIdeasUrl(key) {
   return getSessionUrl(key) + "/ideas/";
 }
 
