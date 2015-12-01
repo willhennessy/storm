@@ -26,22 +26,17 @@
       <div id="sidebar">
         <div id="clock">--:--</div>
         <div id="definition" class="stage">1) Definition</div>
-        <div id="ideation" class="stage active">2) Ideation</div>
-        <div id="discussion" class="stage">3) Discussion</div>
+        <div id="ideation" class="stage">2) Ideation</div>
+        <div id="discussion" class="stage active">3) Discussion</div>
         <div id="decision" class="stage">4) Decision</div>
       </div>
       <div id="main">
-        <div id="section-title" class="section-title">Discussion</div>
+        <div id="title" class="section-title">Discussion</div>
 
-        <div id="overview">
+        <div id="description">
           Each idea will appear onscreen for 60 seconds. Read over it, share your thoughts, offer suggestions, and build off each other's ideas.
+          <br><br>Collecting ideas from the group. Discussion will begin when the timer hits zero.
         </div>
-        <br>
-
-        <label>Idea</label>
-        <div id="title"></div><br><br>
-        <label>Description</label>
-        <div id="description"></div><br><br>
 
         <script>
           var key = getFirebaseKey();
@@ -50,7 +45,6 @@
             var session = snapshot.val();
             initDiscussionClock(session.date, session.time, session.duration);
             $("#goal").html(session.goal);
-            console.log(session);
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });

@@ -34,33 +34,33 @@
         <div id="section-title" class="section-title">Ideation</div>
 
         <div id="overview">
-          Brainstorm as many ideas as you can! When time runs out, all ideas will be shared with the group. Feel free to propose crazy ideas because they will always be anonymous.
+          Brainstorm as many ideas as you can! When time runs out, all ideas will be shared with the group. Feel free to propose crazy ideas because they will always be anonymous. These ideas will be automatically submitted when the timer hits zero.
         </div>
         <br>
 
         <form onsubmit="return submitToFirebase(event)">
-          <label>Idea</label>
-          <input type="text" id="idea1" placeholder="Idea title"><br><br>
+          <label>Title</label>
+          <input type="text" id="title1"><br><br>
           <label>Description</label>
           <textarea id="description1" rows="5" cols="70"></textarea><br><br>
 
-          <label>Idea</label>
-          <input type="text" id="idea2" placeholder="Idea title"><br><br>
+          <label>Title</label>
+          <input type="text" id="title2"><br><br>
           <label>Description</label>
           <textarea id="description2" rows="5" cols="70"></textarea><br><br>
 
-          <label>Idea</label>
-          <input type="text" id="idea3" placeholder="Idea title"><br><br>
+          <label>Title</label>
+          <input type="text" id="title3"><br><br>
           <label>Description</label>
           <textarea id="description3" rows="5" cols="70"></textarea><br><br>
 
-          <label>Idea</label>
-          <input type="text" id="idea4" placeholder="Idea title"><br><br>
+          <label>Title</label>
+          <input type="text" id="title4"><br><br>
           <label>Description</label>
           <textarea id="description4" rows="5" cols="70"></textarea><br><br>
 
-          <label>Idea</label>
-          <input type="text" id="idea5" placeholder="Idea title"><br><br>
+          <label>Title</label>
+          <input type="text" id="title5"><br><br>
           <label>Description</label>
           <textarea id="description5" rows="5" cols="70"></textarea><br><br>
 
@@ -79,11 +79,11 @@
           });
 
           function submitToFirebase() {
-            var idea1 = $('#idea1').val();
-            var idea2 = $('#idea2').val();
-            var idea3 = $('#idea3').val();
-            var idea4 = $('#idea4').val();
-            var idea5 = $('#idea5').val();
+            var title1 = $('#title1').val();
+            var title2 = $('#title2').val();
+            var title3 = $('#title3').val();
+            var title4 = $('#title4').val();
+            var title5 = $('#title5').val();
             var description1 = $('#description1').val();
             var description2 = $('#description2').val();
             var description3 = $('#description3').val();
@@ -97,16 +97,16 @@
             ref.transaction(function(currentData) {
               if (currentData === null)
                 currentData = [];
-              if (idea1 || description1)
-                currentData.push({title: idea1, description: description1});
-              if (idea2 || description2)
-                currentData.push({title: idea2, description: description2});
-              if (idea3 || description3)
-                currentData.push({title: idea3, description: description3});
-              if (idea4 || description4)
-                currentData.push({title: idea4, description: description4});
-              if (idea5 || description5)
-                currentData.push({title: idea5, description: description5});
+              if (title1 || description1)
+                currentData.push({title: title1, description: description1});
+              if (title2 || description2)
+                currentData.push({title: title2, description: description2});
+              if (title3 || description3)
+                currentData.push({title: title3, description: description3});
+              if (title4 || description4)
+                currentData.push({title: title4, description: description4});
+              if (title5 || description5)
+                currentData.push({title: title5, description: description5});
 
               return currentData;
             },
