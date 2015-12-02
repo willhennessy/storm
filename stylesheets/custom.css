@@ -149,7 +149,7 @@ a.invisible {
   margin-top: 50px;
   min-height: 100vh;
   padding: 30px;
-  position: absolute; /* fixed or absolute or relative */
+  position: fixed;
   background: #ffffff;
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -163,28 +163,10 @@ a.invisible {
   border-radius: 0px 2px 2px 0px;
   font-size: 18px;
 }
-/*
-#topbar {
-  border: 1px solid #000;
-  width: 100%;
-  height: 50px; 
-  background: #ff0000;
-}
 
-#sidebar {
+#main.scrollable {
   position: absolute;
-  top:0; bottom:0; left:0;
-  margin-top: 50px;
-  width: 150px;
-  background: #00ff00;
 }
-
-#main {
-  border: 1px solid #000;
-  height: 100%;
-  left: 20%;
-  background: #0000ff;
-}*/
 
 .stage {
   font-size: 24px;
@@ -211,4 +193,3 @@ a.invisible {
   margin-bottom: 20px;
   border-radius: 12px;
 }
-

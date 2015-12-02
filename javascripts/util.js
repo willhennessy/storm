@@ -18,6 +18,10 @@ function getIdeasUrl(key) {
   return getSessionUrl(key) + "/ideas/";
 }
 
+function getChatUrl(key) {
+  return getSessionUrl(key) + "/messages/";
+}
+
 /* Returns true if site is deployed, false if local testing */
 function isDeployed() {
   return window.location.href.indexOf("www.willhennessy.com") > -1;

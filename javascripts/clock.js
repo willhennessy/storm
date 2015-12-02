@@ -31,7 +31,7 @@ function initBeginClock(startDate, startTime, duration) {
 /* init for stage 2 (ideation) */
 function initIdeationClock(startDate, startTime, duration) {
   min = 0;
-  sec = 20;
+  sec = 30;
   startClock();
 }
 
