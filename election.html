@@ -35,9 +35,12 @@
         <div id="title" class="section-title">Election</div>
 
         <div id="description">
-          Vote for your top three ideas.
-          TODO - do you really want to vote for top three? another method?
+          Vote for your top three ideas (1 = favorite). You may only select 3.
         </div>
+
+        <form id="ballot" action="">
+
+        </form>
 
         <script>
           var key = getFirebaseKey();
@@ -46,6 +49,10 @@
             var session = snapshot.val();
             initElectionClock(session.date, session.time, session.duration);
             $("#goal").html(session.goal);
+            var ideas = session.ideas;
+            for (i = ideas.length-1; i > -1; i--) {
+              $("#ballot").append(generateBallotEntry(ideas[i].title, ideas[i].description));
+            }
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });
