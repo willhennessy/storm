@@ -35,6 +35,8 @@ function getCurrentStage() {
     return "ideation";
   else if (window.location.href.indexOf("discussion") > -1)
     return "discussion";
+  else if (window.location.href.indexOf("election") > -1)
+    return "election";
   else if (window.location.href.indexOf("decision") > -1)
     return "decision";
 }

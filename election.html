@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-dark.css">
     <link rel="stylesheet" href="stylesheets/custom.css">
-    <link rel="stylesheet" href="stylesheets/chat.css">
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/main.js"></script>
@@ -28,16 +27,16 @@
         <div id="clock">--:--</div>
         <div id="definition" class="stage">1) Definition</div>
         <div id="ideation" class="stage">2) Ideation</div>
-        <div id="discussion" class="stage active">3) Discussion</div>
-        <div id="election" class="stage">4) Election</div>
+        <div id="discussion" class="stage">3) Discussion</div>
+        <div id="election" class="stage active">4) Election</div>
         <div id="decision" class="stage">5) Decision</div>
       </div>
-      <div id="main">
-        <div id="title" class="section-title">Discussion</div>
+      <div id="main" class="scrollable">
+        <div id="title" class="section-title">Election</div>
 
         <div id="description">
-          Each idea will appear onscreen for 60 seconds. Read over it, share your thoughts, offer suggestions, and build off each other's ideas.
-          <br><br>Collecting ideas from the group. Discussion will begin when the timer hits zero.
+          Vote for your top three ideas.
+          TODO - do you really want to vote for top three? another method?
         </div>
 
         <script>
@@ -45,7 +44,7 @@
           var ref = new Firebase(getSessionUrl(key));
           ref.once("value", function(snapshot) {
             var session = snapshot.val();
-            initDiscussionClock(session.date, session.time, session.duration);
+            initElectionClock(session.date, session.time, session.duration);
             $("#goal").html(session.goal);
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
@@ -53,19 +52,6 @@
         </script>
       </div>
     </div>
-
-
-    <div class="chat-container">
-      <ul id='message-list'>
-        <li>hello world</li>
-        <li>and hello to you</li>
-      </ul>
-
-
-      <input type='text' id='message-input' placeholder='Type a message...'>
-    </div>
-
-    <script src="javascripts/chat.js"></script>
 
     <div class="wrapper">
 

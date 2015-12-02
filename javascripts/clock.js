@@ -44,6 +44,12 @@ function initDiscussionClock(startDate, startTime, duration) {
   intervalID = setInterval(updateDiscussionClock,1000);
 }
 
+function initElectionClock(startDate, startTime, duration) {
+  min = 99;
+  sec = 99;
+  startClock();
+}
+
 function updateDiscussionClock() {
   if (min == 0 && sec == 0 && ideas === null) {
   	fetchIdeas();
@@ -99,6 +105,8 @@ function finishStage() {
   	finishIdeation();
   else if (stage === "discussion")
   	finishDiscussion();
+  else if (stage === "election")
+  	finishElection();
   else if (stage === "decision")
   	finishDecision();
   else
@@ -123,6 +131,10 @@ function finishDiscussion() {
   } else {
     window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?creator=1&session="+getFirebaseKey());
   }
+}
+
+function finishElection() {
+  return;
 }
 
 function finishDecision() {
