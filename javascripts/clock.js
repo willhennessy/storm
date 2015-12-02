@@ -127,13 +127,18 @@ function finishIdeation() {
 
 function finishDiscussion() {
   if (isDeployed()) {
-    window.location.replace("http://www.willhennessy.com/storm/ideation?session="+getFirebaseKey());
+    window.location.replace("http://www.willhennessy.com/storm/election?session="+getFirebaseKey());
   } else {
-    window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?creator=1&session="+getFirebaseKey());
+    window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/election.html?creator=1&session="+getFirebaseKey());
   }
 }
 
 function finishElection() {
+  if (isDeployed()) {
+    window.location.replace("http://www.willhennessy.com/storm/decision?session="+getFirebaseKey());
+  } else {
+    window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/decision.html?creator=1&session="+getFirebaseKey());
+  }
   return;
 }
 
