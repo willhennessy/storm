@@ -50,6 +50,12 @@ function initElectionClock(startDate, startTime, duration) {
   startClock();
 }
 
+function initDecisionClock(startDate, startTime, duration) {
+  min = 0;
+  sec = 1;
+  startClock();
+}
+
 function updateDiscussionClock() {
   if (min == 0 && sec == 0 && ideas === null) {
   	fetchIdeas();
@@ -139,6 +145,7 @@ function finishElection() {
 }
 
 function finishDecision() {
+  displayDecision();
   return;
 }
 

@@ -230,3 +230,32 @@ a.invisible {
   font-weight: bold;
   color: #4276b6;
 }
+
+#predecision {
+  margin-top: 150px;
+  text-align: center;
+}
+
+#decision-box {
+  margin-top: 100px;
+  padding: 20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  border: 4px solid #4276b6;
+}
+
+#decision-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4276b6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#decision-description {
+  text-align: center;
+}
