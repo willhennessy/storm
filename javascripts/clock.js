@@ -22,8 +22,6 @@ function initBeginClock(startDate, startTime, duration) {
     sec = Math.floor((diff/1000) % 60)
     startClock();
   } else {
-  	min = 99;
-  	sec = 99;
     $("#clock").html(getTimeString());
   }
 }
@@ -171,6 +169,8 @@ function updateClock() {
 }
 
 function getTimeString() {
+  if (min > 59)
+    return "--:--";
   if (min < 10)
     var m = "0" + min;
   else

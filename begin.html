@@ -56,7 +56,7 @@
           </tr>
           <tr>
             <td><label>Goal</label></td>
-            <td id="goal"></td>
+            <td id="goal-info"></td>
           </tr>
           <tr>
             <td><label>Criteria</label></td>
@@ -66,19 +66,6 @@
                 <li id="criteria2"></li>
                 <li id="criteria3"></li>
               </ol>
-            </td>
-          </tr>
-          <tr>
-            <td><label>Invitees</label></td>
-            <td>
-              <ul>
-                <li id="email1"></li>
-                <li id="email2"></li>
-                <li id="email3"></li>
-                <li id="email4"></li>
-                <li id="email5"></li>
-                <li id="email6"></li>
-              </ul>
             </td>
           </tr>
         </table>
@@ -100,15 +87,10 @@
             initBeginClock(session.date, session.time, session.duration);
             $("#duration").html(session.duration+" minutes");
             $("#goal").html(session.goal);
+            $("#goal-info").html(session.goal);
             $("#criteria1").html(session.criteria1);
             $("#criteria2").html(session.criteria2);
             $("#criteria3").html(session.criteria3);
-            $("#email1").html(session.email1);
-            $("#email2").html(session.email2);
-            $("#email3").html(session.email3);
-            $("#email4").html(session.email4);
-            $("#email5").html(session.email5);
-            $("#email6").html(session.email6);
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });

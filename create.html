@@ -30,10 +30,8 @@
         <ul></ul>
       </nav>
       <section>
+        <div id="section-title" class="section-title">Create an Event</div>
         <form onsubmit="return submitToFirebase(event)">
-          <label>Goal</label>
-          <input type="text" id="goal" placeholder="goal"><br><br>
-
           <label>Date</label>
           <input type="date" id="date" min="2015-11-22" placeholder="mm/dd/yyyy"><br><br>
 
@@ -46,20 +44,15 @@
             <option value="60">60</option>
             <option value="90">90</option>
           </select>
-          <label> minutes</label><br><br>
+          <label> minutes</label><br><br><br>
+
+          <label>Goal</label>
+          <input type="text" id="goal" placeholder="goal" class="long-input"><br><br>
 
           <label>Criteria</label><br>
           <input type="text" id="criteria1" placeholder="ex. efficiency"><br>
           <input type="text" id="criteria2"placeholder="ex. aesthetics"><br>
           <input type="text" id="criteria3" placeholder="ex. cost"><br><br>
-
-          <label>Invite Email Addresses</label><br>
-          <input type="email" id="email1" placeholder="ally@example.com"><br>
-          <input type="email" id="email2" placeholder="bob@example.com"><br>
-          <input type="email" id="email3" placeholder="chuck@example.com"><br>
-          <input type="email" id="email4" placeholder="dana@example.com"><br>
-          <input type="email" id="email5" placeholder="emily@example.com"><br>
-          <input type="email" id="email6" placeholder="frank@example.com"><br><br>
 
           <input type="submit" class="button" id="submit-button">
         </form>
@@ -76,12 +69,6 @@
             var criteria1 = $('#criteria1').val();
             var criteria2 = $('#criteria2').val();
             var criteria3 = $('#criteria3').val();
-            var email1 = $('#email1').val();
-            var email2 = $('#email2').val();
-            var email3 = $('#email3').val();
-            var email4 = $('#email4').val();
-            var email5 = $('#email5').val();
-            var email6 = $('#email6').val();
 
             var key = "";
             var ref = new Firebase(getSessionUrl(key));
@@ -94,12 +81,6 @@
               criteria1: criteria1,
               criteria2: criteria2,
               criteria3: criteria3,
-              email1: email1,
-              email2: email2,
-              email3: email3,
-              email4: email4,
-              email5: email5,
-              email6: email6
             },
             onSubmitToFirebaseComplete);
 
