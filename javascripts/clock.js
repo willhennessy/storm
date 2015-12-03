@@ -17,12 +17,10 @@ function initBeginClock(startDate, startTime, duration) {
 
   if (diff < 0) { // session already started
   	finishStage();
-  } else if (diff < 6000000) {
+  } else {
     min = Math.floor(diff/1000/60);
     sec = Math.floor((diff/1000) % 60)
     startClock();
-  } else {
-    $("#clock").html(getTimeString());
   }
 }
 
