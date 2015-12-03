@@ -12,6 +12,7 @@
     <script src="javascripts/main.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/clock.js"></script>
+    <script src="javascripts/transcript.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -42,9 +43,10 @@
           <div id="decision-description" class="centered"></div>
         </div>
 
-        <a href="transcript.html" class="big-button button"><span>Download Transcript</span></a>
+        <a id="download" download="transcript.txt" href="transcript.html" class="big-button button"><span>Download Transcript</span></a>
 
         <script>
+          $("#download").hide();
           $("#decision-box").hide();
           var key = getFirebaseKey();
           var ref = new Firebase(getSessionUrl(key));
@@ -58,19 +60,25 @@
 
           function displayDecision() {
             var key = getFirebaseKey();
-            var ref = new Firebase(getIdeasUrl(key));
+            var ref = new Firebase(getSessionUrl(key));
             ref.once("value", function(snapshot) {
-              var ideas = snapshot.val();
+              var session = snapshot.val();
+              var ideas = session.ideas;
               var winningIdea = selectWinningIdea(ideas);
               $("#predecision").html("The winner is");
               $("#decision-box").show();
               $("#decision-title").html(winningIdea.title);
               $("#decision-description").html(winningIdea.title);
+              var button = $("#download");
+              var transcript = generateTranscript(session, winningIdea);
+              button.attr("href", makeTextFile(transcript));
+              button.show();
             }, function (errorObject) {
               console.log("The read failed: " + errorObject.code);
             });
           }
 
+          /* Given the list of ideas, return the idea with the most votes */
           function selectWinningIdea(ideas) {
             var currWinner = ideas[0];
             for (i = 0; i < ideas.length; i++) {
@@ -80,6 +88,13 @@
             }
             return currWinner;
           }
+
+          /* Creates a txt file transcript of the brainstorm session and
+           * returns a URL to download the file. */
+          function makeTextFile(text) {
+            var data = new Blob([text], {type: 'text/plain'});
+            return window.URL.createObjectURL(data);
+          };
         </script>
       </div>
     </div>
