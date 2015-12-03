@@ -1,5 +1,5 @@
 # storm
-Storm is a brainstorming web app I am building as my final project in CS 598: Social Spaces on the Internet at the University of Illinois.
+Storm is a brainstorming web app I built as my final project in CS 598: Social Spaces on the Internet at the University of Illinois.
 
 The goal of this computer-mediated communication tool is to create a brainstorming environment without peer pressure and reputation influencers.
 
