@@ -13,11 +13,10 @@ function generateTranscript(session, winningIdea) {
   		+"Winning Idea: "+winningIdea.title+"\n"
   		+winningIdea.description+"\n\n"
   		+"==== Proposed Ideas ====\n"
-  		+"(A 1st choice counts as 3 votes, 2nd choice counts as 2 votes, 3rd choice counts as 1 vote.)\n\n"
+  		+"1st choice = 3 votes\n2nd choice = 2 votes\n3rd choice = 1 vote\n\n"
   		+generateIdeasTranscript(session.ideas)
   		+"==== Chat Log ====\n"
-  		+generateChatTranscript(session.messages)
-  		;
+  		+generateChatTranscript(session.messages);
 }
 
 function generateIdeasTranscript(ideas) {
@@ -32,18 +31,9 @@ function generateIdeasTranscript(ideas) {
 }
 
 function generateChatTranscript(messages) {
-  var messagesRef = new Firebase(getSessionUrl()+"/messages/");
-  messagesRef.once("value", function(snapshot) {
-  	snapshot.forEach(function(childSnapshot) {
-  		console.log(childSnapshot.val());
-  	});
-  });
-
-  var transcript = "";
-  console.log(messages);
-
-  for (i = 0; i < messages.length; i++) {
-    transcript += messages[i]+"\n";
+  var log = "";
+  for (var k in messages) {
+  	log += messages[k].text+"\n";
   }
-  return transcript;
+  return log;
 }
