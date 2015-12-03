@@ -45,8 +45,8 @@ function initDiscussionClock(startDate, startTime, duration) {
 }
 
 function initElectionClock(startDate, startTime, duration) {
-  min = 99;
-  sec = 99;
+  min = 0;
+  sec = 5;
   startClock();
 }
 
@@ -135,12 +135,7 @@ function finishDiscussion() {
 }
 
 function finishElection() {
-  if (isDeployed()) {
-    window.location.replace("http://www.willhennessy.com/storm/decision?session="+getFirebaseKey());
-  } else {
-    window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/decision.html?creator=1&session="+getFirebaseKey());
-  }
-  return;
+  submitVotes();
 }
 
 function finishDecision() {

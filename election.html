@@ -35,7 +35,8 @@
         <div id="title" class="section-title">Election</div>
 
         <div id="description">
-          Vote for your top three ideas (1 = favorite). You may only select 3.
+          Vote for your top three ideas (1 = favorite). You may only select 3.<br>
+          Your vote will be automatically submitted when the timer hits zero.
         </div>
 
         <form id="ballot" action="">
@@ -51,11 +52,59 @@
             $("#goal").html(session.goal);
             var ideas = session.ideas;
             for (i = ideas.length-1; i > -1; i--) {
-              $("#ballot").append(generateBallotEntry(ideas[i].title, ideas[i].description));
+              $("#ballot").append(generateBallotEntry(i, ideas[i].title, ideas[i].description));
             }
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });
+
+          function submitVotes() {
+            var voteOneIdx = $('input[name=one]:checked', '#ballot').val();
+            var voteTwoIdx = $('input[name=two]:checked', '#ballot').val();
+            var voteThreeIdx = $('input[name=three]:checked', '#ballot').val();
+
+            var key = getFirebaseKey();
+            var ideasRef = new Firebase(getIdeasUrl(key));
+
+            ideasRef.transaction(function(currentData) {
+              if (currentData === null) {
+                return currentData;
+              }
+              else {
+                if (currentData[voteOneIdx].votes)
+                  currentData[voteOneIdx].votes += 3;
+                else
+                  currentData[voteOneIdx].votes = 3;
+
+                if (currentData[voteTwoIdx].votes)
+                  currentData[voteTwoIdx].votes += 2;
+                else
+                  currentData[voteTwoIdx].votes = 2;
+
+                if (currentData[voteThreeIdx].votes)
+                  currentData[voteThreeIdx].votes += 1;
+                else
+                  currentData[voteThreeIdx].votes = 1;
+
+                return currentData;
+              }
+              
+            }, onSubmitToFirebaseComplete);
+          }
+
+          function onSubmitToFirebaseComplete(error, committed, snapshot) {
+            if (error || !committed) {
+              alert("Sorry, an error occurred");
+            }
+            else {
+              // redirect to the discussion page
+              if (isDeployed()) {
+                window.location.replace("http://www.willhennessy.com/storm/decision?session="+getFirebaseKey());
+              } else {
+                window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/decision.html?creator=1&session="+getFirebaseKey());
+              }
+            }
+          }
         </script>
       </div>
     </div>

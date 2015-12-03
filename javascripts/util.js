@@ -76,12 +76,12 @@ function formatTime(rawTime) {
   return output;
 }
 
-function generateBallotEntry(title, description) {
+function generateBallotEntry(idx, title, description) {
   return "<div class='vote-container'>"
             +"<div class='vote-boxes'>"
-              +"<label><input type='radio' name='one'>1</label> "
-              +"<label><input type='radio' name='two'>2</label> "
-              +"<label><input type='radio' name='three'>3</label> "
+              +"<label><input type='radio' name='one' value='"+idx+"'>1</label> "
+              +"<label><input type='radio' name='two' value='"+idx+"'>2</label> "
+              +"<label><input type='radio' name='three' value='"+idx+"'>3</label> "
             +"</div>"
             +"<div class='vote-information'>"
               +"<div class='vote-title'>"+title+"</div>"
