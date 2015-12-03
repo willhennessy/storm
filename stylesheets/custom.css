@@ -259,3 +259,8 @@ a.invisible {
 #decision-description {
   text-align: center;
 }
+
+.bottom-right {
+  float: right;
+  margin-top: 100px;
+}
