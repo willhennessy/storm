@@ -88,6 +88,7 @@ function displayNextIdea() {
   $("#title").html(currIdea.title);
   $("#description").html(currIdea.description);
   numIdeasCompleted += 1;
+  $("#counter").html("  ("+numIdeasCompleted+"/"+ideas.length+")");
 }
 
 /* Returns true if every topic has been discussed */
