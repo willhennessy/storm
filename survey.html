@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Storm</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="stylesheets/custom.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/util.js"></script>
+    <script src="javascripts/clock.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+    <div class="container">
+      <div id="topbar">
+        <span id="goal"></span>
+      </div>
+      <div id="sidebar">
+        <div id="clock">--:--</div>
+        <div id="definition" class="stage">1) Definition</div>
+        <div id="ideation" class="stage">2) Ideation</div>
+        <div id="discussion" class="stage">3) Discussion</div>
+        <div id="election" class="stage">4) Election</div>
+        <div id="decision" class="stage">5) Decision</div>
+      </div>
+      <div id="main" class="scrollable">
+        <div id="section-title" class="section-title">Survey</div>
+
+        <div id="overview">
+          Storm is an experimental tool and we need feedback! Please take 60 seconds to tell us what you thought.
+        </div>
+        <br>
+
+        <form onsubmit="return submitToFirebase(event)">
+          <label>Question 1</label>
+          <p>What did you think?</p>
+          <!-- TODO - add questions, radio buttons, submit logic -->
+        </form>
+
+        <script>
+          function submitToFirebase() {
+            var title1 = $('#title1').val();
+
+
+            var key = getFirebaseKey();
+            var ref = new Firebase(getIdeasUrl(key));
+
+            // submit ideas to the database
+            ref.transaction(function(currentData) {
+              if (currentData === null)
+                currentData = [];
+              if (title1 || description1)
+                currentData.push({title: title1, description: description1});
+
+              return currentData;
+            },
+            onSubmitToFirebaseComplete);
+
+            return false;
+          }
+
+          function onSubmitToFirebaseComplete(error, committed, snapshot) {
+            if (error || !committed) {
+              alert("Sorry, an error occurred");
+            }
+            else {
+              $("#section-title").html("Thank You!");
+            }
+          }
+        </script>
+      </div>
+    </div>
+
+    <div class="wrapper">
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
