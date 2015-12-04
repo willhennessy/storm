@@ -101,7 +101,7 @@
           function selectWinningIdea(ideas) {
             var currWinner = ideas[0];
             for (i = 0; i < ideas.length; i++) {
-              if (ideas[i].votes > currWinner.votes) {
+              if (ideas[i].votes > currWinner.votes || currWinner.votes == null) {
                 currWinner = ideas[i];
               }
             }
