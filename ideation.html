@@ -73,10 +73,17 @@
           <label>Description</label>
           <textarea id="description5" rows="5" cols="70"></textarea><br><br>
 
-          <br><br><p>These ideas will be automatically submitted when the timer hits zero.</p>
+          <br><p>These ideas will be automatically submitted when the timer hits zero.</p>
         </form>
 
+        <br><br>
+
+        <div class="section-title">Previous Ideas</div>
+        <div id="previous-ideas"></div>
+
+
         <script>
+          var numOldIdeas = 0;
           var key = getFirebaseKey();
           var ref = new Firebase(getSessionUrl(key));
           ref.once("value", function(snapshot) {
@@ -86,6 +93,17 @@
             $("#criteria1").html(session.criteria1);
             $("#criteria2").html(session.criteria2);
             $("#criteria3").html(session.criteria3);
+            if (session.ideas) {
+              numOldIdeas = session.ideas.length;
+              for (i = 0; i < session.ideas.length; i++) {
+                $("#previous-ideas").append(
+                  "<div class='old-idea-information'>"
+                    +"<div class='vote-title'>"+session.ideas[i].title+"</div>"
+                    + session.ideas[i].description
+                  +"</div>"
+                );
+              }
+            }
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });
@@ -137,9 +155,9 @@
                 round = 2;
               // redirect to the discussion page
               if (isDeployed()) {
-                window.location.replace("http://www.willhennessy.com/storm/discussion?round="+round+"&session="+getFirebaseKey());
+                window.location.replace("http://www.willhennessy.com/storm/discussion?round="+round+"&numIdeasCompleted="+numOldIdeas+"&session="+getFirebaseKey());
               } else {
-                window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/discussion.html?round="+round+"&creator=1&session="+getFirebaseKey());
+                window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/discussion.html?round="+round+"&numIdeasCompleted="+numOldIdeas+"&session="+getFirebaseKey());
               }
             }
           }

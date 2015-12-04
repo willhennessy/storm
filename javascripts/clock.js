@@ -35,6 +35,9 @@ function initDiscussionClock(startDate, startTime, duration) {
   min = 0;
   sec = 5;
 
+  numIdeasCompleted = parseInt(getParameterByName("numIdeasCompleted"));
+  console.log(numIdeasCompleted);
+
   $("#clock").html(getTimeString());
   updateDiscussionClock(); // run once to start
   intervalID = setInterval(updateDiscussionClock,1000);
@@ -134,7 +137,7 @@ function finishDiscussion() {
     if (isDeployed()) {
       window.location.replace("http://www.willhennessy.com/storm/election?session="+getFirebaseKey());
     } else {
-      window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/election.html?creator=1&session="+getFirebaseKey());
+      window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/election.html?session="+getFirebaseKey());
     }
   }
   else {
@@ -142,7 +145,7 @@ function finishDiscussion() {
     if (isDeployed()) {
       window.location.replace("http://www.willhennessy.com/storm/ideation?round=2&session="+getFirebaseKey());
     } else {
-      window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?round=2&creator=1&session="+getFirebaseKey());
+      window.location.replace("/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/ideation.html?round=2&session="+getFirebaseKey());
     }
   }
 }
