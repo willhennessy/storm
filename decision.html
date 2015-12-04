@@ -43,11 +43,16 @@
           <div id="decision-description" class="centered"></div>
         </div>
 
-        <a id="download" download="transcript.txt" href="transcript.html" class=" bottom-right big-button button"><span>Download Transcript</span></a>
+        <div class="bottom-right">
+          <a id="download" download="transcript.txt" href="transcript.html" class="big-button button"><span>Download Transcript</span></a>
+          <br><br><br><br><br>
+          <a id="survey-button" href="survey.html" class="big-button button"><span>Feedback Survey</span></a>
+        </div>
 
         <script>
           $("#download").hide();
           $("#decision-box").hide();
+          $("#survey-button").hide();
           var key = getFirebaseKey();
           var ref = new Firebase(getSessionUrl(key));
           ref.once("value", function(snapshot) {
@@ -69,10 +74,13 @@
               $("#decision-box").show();
               $("#decision-title").html(winningIdea.title);
               $("#decision-description").html(winningIdea.title);
-              var button = $("#download");
+              var download = $("#download");
               var transcript = generateTranscript(session, winningIdea);
-              button.attr("href", makeTextFile(transcript));
-              button.show();
+              download.attr("href", makeTextFile(transcript));
+              download.show();
+              var survey = $("#survey-button");
+              survey.attr("href", "survey.html?session="+key);
+              survey.show();
             }, function (errorObject) {
               console.log("The read failed: " + errorObject.code);
             });

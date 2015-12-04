@@ -236,7 +236,7 @@ a.invisible {
 }
 
 #predecision {
-  margin-top: 150px;
+  margin-top: 100px;
   text-align: center;
 }
 
@@ -284,16 +284,13 @@ a.invisible {
 .vote-boxes.survey {
   width: 500px;
   padding-left: 100px;
+  float: none;
 }
 
 .survey-spacing {
-  margin-bottom: 150px;
+  margin-bottom: 80px;
 }
 
 .survey-textarea {
   margin-left: 10px;
-}
-
-.survey-submit {
-  margin-top: 40px;
 }

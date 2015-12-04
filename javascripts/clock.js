@@ -57,8 +57,8 @@ function updateDiscussionClock() {
   	fetchIdeas();
   } else if (min == 0 && sec == 0 && !isDiscussionDone()) { 
     displayNextIdea();
-    min = 90;
-    sec = 0;
+    min = 0;
+    sec = 10;
     $("#clock").html(getTimeString());
   } else if (min == 0 && sec == 0 && isDiscussionDone()) {
   	finishStage();
