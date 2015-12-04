@@ -82,20 +82,26 @@
                 return currentData;
               }
               else {
-                if (currentData[voteOneIdx].votes)
-                  currentData[voteOneIdx].votes += 3;
-                else
-                  currentData[voteOneIdx].votes = 3;
+                if (voteOneIdx) {
+                  if (currentData[voteOneIdx].votes)
+                    currentData[voteOneIdx].votes += 3;
+                  else
+                    currentData[voteOneIdx].votes = 3;
+                }
 
-                if (currentData[voteTwoIdx].votes)
-                  currentData[voteTwoIdx].votes += 2;
-                else
-                  currentData[voteTwoIdx].votes = 2;
+                if (voteTwoIdx) {
+                  if (currentData[voteTwoIdx].votes)
+                    currentData[voteTwoIdx].votes += 2;
+                  else
+                    currentData[voteTwoIdx].votes = 2;
+                }
 
-                if (currentData[voteThreeIdx].votes)
-                  currentData[voteThreeIdx].votes += 1;
-                else
-                  currentData[voteThreeIdx].votes = 1;
+                if (voteThreeIdx) {
+                  if (currentData[voteThreeIdx].votes)
+                    currentData[voteThreeIdx].votes += 1;
+                  else
+                    currentData[voteThreeIdx].votes = 1;
+                }
 
                 return currentData;
               }
