@@ -52,7 +52,7 @@ function generateStormLink() {
   if (isDeployed()) {
     return "<a href=\"http://www.willhennessy.com/storm/begin?session="+key+"\">http://www.willhennessy.com/storm/begin?session="+key;
   } else {
-    return "<a href=\"/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/begin.html?session="+key+"\">http://www.willhennessy.com/storm/session?session="+key;
+    return "<a href=\"/Users/willhennessy/Documents/CS%20598%20-%20Social/storm/begin.html?session="+key+"\">http://www.willhennessy.com/storm/begin?session="+key;
   }
 }
 

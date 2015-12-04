@@ -26,14 +26,14 @@ function initBeginClock(startDate, startTime, duration) {
 
 /* init for stage 2 (ideation) */
 function initIdeationClock(startDate, startTime, duration) {
-  min = 0;
-  sec = 30;
+  min = 8;
+  sec = 0;
   startClock();
 }
 
 function initDiscussionClock(startDate, startTime, duration) {
   min = 0;
-  sec = 5;
+  sec = 10;
 
   numIdeasCompleted = parseInt(getParameterByName("numIdeasCompleted"));
   console.log(numIdeasCompleted);
@@ -45,13 +45,13 @@ function initDiscussionClock(startDate, startTime, duration) {
 
 function initElectionClock(startDate, startTime, duration) {
   min = 0;
-  sec = 5;
+  sec = 10;
   startClock();
 }
 
 function initDecisionClock(startDate, startTime, duration) {
   min = 0;
-  sec = 1;
+  sec = 10;
   startClock();
 }
 
@@ -61,7 +61,7 @@ function updateDiscussionClock() {
   } else if (min == 0 && sec == 0 && !isDiscussionDone()) { 
     displayNextIdea();
     min = 0;
-    sec = 10;
+    sec = 40;
     $("#clock").html(getTimeString());
   } else if (min == 0 && sec == 0 && isDiscussionDone()) {
   	finishStage();
