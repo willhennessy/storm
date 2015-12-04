@@ -30,6 +30,14 @@
         <div id="discussion" class="stage">3) Discussion</div>
         <div id="election" class="stage">4) Election</div>
         <div id="decision" class="stage">5) Decision</div>
+        <div class="criteria-list">
+          Criteria
+          <ol>
+            <li id="criteria1">one</li>
+            <li id="criteria2">two</li>
+            <li id="criteria3">three</li>
+          </ol>
+        </div>
       </div>
       <div id="main" class="scrollable">
         <div id="section-title" class="section-title">Ideation</div>
@@ -75,6 +83,9 @@
             var session = snapshot.val();
             initIdeationClock(session.date, session.time, session.duration);
             $("#goal").html(session.goal);
+            $("#criteria1").html(session.criteria1);
+            $("#criteria2").html(session.criteria2);
+            $("#criteria3").html(session.criteria3);
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });

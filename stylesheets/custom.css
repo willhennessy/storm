@@ -183,6 +183,14 @@ a.invisible {
   color: #4276b6;
 }
 
+.criteria-list {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  padding: 15px 30px;
+  margin-top: 200px;
+}
+
 #clock {
   font-size: 30px;
   font-family: "Lucidatypewriter", monospace;
