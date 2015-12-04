@@ -39,7 +39,7 @@
         </div>
         <br>
 
-        <form onsubmit="return submitToFirebase(event)">
+        <form id="survey" onsubmit="return submitToFirebase(event)">
           <div class="survey-spacing">
             <span class="survey-title">Question 1</span>
             How satisfied are you with this decision?
@@ -90,24 +90,28 @@
           <br><br>
 
           <input type="submit" class="button" id="submit-button">
-
         </form>
 
         <script>
           function submitToFirebase() {
-            var title1 = $('#title1').val();
-
+            var one = $('input[name=one]:checked', '#survey').val();
+            var two = $('input[name=two]:checked', '#survey').val();
+            var three = $('input[name=three]:checked', '#survey').val();
+            var comments = $("#comments").val();
 
             var key = getFirebaseKey();
-            var ref = new Firebase(getIdeasUrl(key));
+            var ref = new Firebase(getSurveyUrl(key));
 
             // submit ideas to the database
             ref.transaction(function(currentData) {
               if (currentData === null)
                 currentData = [];
-              if (title1 || description1)
-                currentData.push({title: title1, description: description1});
-
+              currentData.push({
+                question_one: one,
+                question_two: two,
+                question_three: three,
+                additional_comments: comments
+              });
               return currentData;
             },
             onSubmitToFirebaseComplete);
@@ -120,6 +124,8 @@
               alert("Sorry, an error occurred");
             }
             else {
+              $("#survey").hide();
+              $("#overview").hide();
               $("#section-title").html("Thank You!");
             }
           }

@@ -22,6 +22,10 @@ function getChatUrl(key) {
   return getSessionUrl(key) + "/messages/";
 }
 
+function getSurveyUrl(key) {
+  return getSessionUrl(key) + "/survey/";
+}
+
 /* Returns true if site is deployed, false if local testing */
 function isDeployed() {
   return window.location.href.indexOf("www.willhennessy.com") > -1;
