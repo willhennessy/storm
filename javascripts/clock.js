@@ -44,8 +44,8 @@ function initDiscussionClock(startDate, startTime, duration) {
 }
 
 function initElectionClock(startDate, startTime, duration) {
-  min = 0;
-  sec = 10;
+  min = 1;
+  sec = 30;
   startClock();
 }
 
