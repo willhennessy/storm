@@ -40,9 +40,56 @@
         <br>
 
         <form onsubmit="return submitToFirebase(event)">
-          <label>Question 1</label>
-          <p>What did you think?</p>
-          <!-- TODO - add questions, radio buttons, submit logic -->
+          <div class="survey-spacing">
+            <span class="survey-title">Question 1</span>
+            How satisfied are you with this decision?
+            <div class='vote-boxes survey'>
+              <label>dissatisfied</label>
+              <label><input type='radio' name='one' value='1'>1</label>
+              <label><input type='radio' name='one' value='2'>2</label>
+              <label><input type='radio' name='one' value='3'>3</label>
+              <label><input type='radio' name='one' value='4'>4</label>
+              <label><input type='radio' name='one' value='5'>5</label>
+              <label>satisfied</label>
+            </div>
+          </div>
+
+          <div class="survey-spacing">
+            <span class="survey-title">Question 2</span>
+            How satisfied are you with the time allotted?
+            <div class='vote-boxes survey'>
+              <label>not enough time</label>
+              <label><input type='radio' name='two' value='1'>1</label>
+              <label><input type='radio' name='two' value='2'>2</label>
+              <label><input type='radio' name='two' value='3'>3</label>
+              <label><input type='radio' name='two' value='4'>4</label>
+              <label><input type='radio' name='two' value='5'>5</label>
+              <label>too much time</label>
+            </div>
+          </div>
+
+          <div class="survey-spacing">
+            <span class="survey-title">Question 3</span>
+            How satisfied are you with this decision?
+            <div class='vote-boxes survey'>
+              <label>uncomfortable</label>
+              <label><input type='radio' name='three' value='1'>1</label>
+              <label><input type='radio' name='three' value='2'>2</label>
+              <label><input type='radio' name='three' value='3'>3</label>
+              <label><input type='radio' name='three' value='4'>4</label>
+              <label><input type='radio' name='three' value='5'>5</label>
+              <label>comfortable</label>
+            </div>
+          </div>
+
+          <div>
+            <span class="survey-title">Question 4</span>
+            Please share any additional comments.
+            <textarea id="comments" class="survey-textarea" rows="5" cols="70"></textarea>
+          </div>
+
+          <input type="submit" class="button survey-submit" id="submit-button">
+
         </form>
 
         <script>

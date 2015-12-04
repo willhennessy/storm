@@ -268,3 +268,32 @@ a.invisible {
   float: right;
   margin-top: 100px;
 }
+
+.survey-title {
+  font-size: 20px;
+  color: #4276b6;
+  margin: 10px;
+}
+
+.survey-question {
+  padding-top: 30px;
+  padding-left: 30px;
+  margin-bottom: 140px;
+}
+
+.vote-boxes.survey {
+  width: 500px;
+  padding-left: 100px;
+}
+
+.survey-spacing {
+  margin-bottom: 150px;
+}
+
+.survey-textarea {
+  margin-left: 10px;
+}
+
+.survey-submit {
+  margin-top: 40px;
+}
