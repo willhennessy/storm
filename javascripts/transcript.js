@@ -22,10 +22,13 @@ function generateTranscript(session, winningIdea) {
 function generateIdeasTranscript(ideas) {
   var transcript = "";
   for (i = 0; i < ideas.length; i++) {
-  	transcript +=
-  	  ideas[i].title+"\n"
-  	  +ideas[i].description+"\n"
-  	  +"Votes: "+ideas[i].votes+"\n\n";
+    var idea = ideas[i];
+    if (idea) {
+      transcript +=
+        idea.title+"\n"
+        +idea.description+"\n"
+        +"Votes: "+idea.votes+"\n\n";
+    }
   }
   return transcript;
 }
