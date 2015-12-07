@@ -84,7 +84,7 @@
               $("#predecision").html("The winner is");
               $("#decision-box").show();
               $("#decision-title").html(winningIdea.title);
-              $("#decision-description").html(winningIdea.title);
+              $("#decision-description").html(winningIdea.description);
               var download = $("#download");
               var transcript = generateTranscript(session, winningIdea);
               download.attr("href", makeTextFile(transcript));

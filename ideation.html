@@ -96,12 +96,14 @@
             if (session.ideas) {
               numOldIdeas = session.ideas.length;
               for (i = 0; i < session.ideas.length; i++) {
-                $("#previous-ideas").append(
-                  "<div class='old-idea-information'>"
-                    +"<div class='vote-title'>"+session.ideas[i].title+"</div>"
-                    + session.ideas[i].description
-                  +"</div>"
-                );
+                if (session.ideas[i]) {
+                  $("#previous-ideas").append(
+                    "<div class='old-idea-information'>"
+                      +"<div class='vote-title'>"+session.ideas[i].title+"</div>"
+                      + session.ideas[i].description
+                    +"</div>"
+                  );
+                }
               }
             }
           }, function (errorObject) {

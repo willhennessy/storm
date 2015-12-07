@@ -188,7 +188,7 @@ a.invisible {
   font-weight: bold;
   color: white;
   padding: 15px 30px;
-  margin-top: 200px;
+  margin-top: 80px;
 }
 
 #clock {
@@ -248,12 +248,12 @@ a.invisible {
 }
 
 #predecision {
-  margin-top: 100px;
+  margin-top: 60px;
   text-align: center;
 }
 
 #decision-box {
-  margin-top: 100px;
+  margin-top: 60px;
   padding: 20px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -270,10 +270,11 @@ a.invisible {
   color: #4276b6;
   margin-bottom: 20px;
   text-align: center;
+  padding: 10px;
 }
 
 #decision-description {
-  text-align: center;
+  font-size: 22px;
 }
 
 .bottom-right {

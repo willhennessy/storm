@@ -63,7 +63,9 @@
             $("#criteria3").html(session.criteria3);
             var ideas = session.ideas;
             for (i = ideas.length-1; i > -1; i--) {
-              $("#ballot").append(generateBallotEntry(i, ideas[i].title, ideas[i].description));
+              if (ideas[i]) {
+                $("#ballot").append(generateBallotEntry(i, ideas[i].title, ideas[i].description));
+              }
             }
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
